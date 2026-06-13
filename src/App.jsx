@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const MOCK_VIDEOS = [
-  { id: 1, title: 'How we started Shuddh Swad', date: 'October 12, 2023' },
-  { id: 2, title: 'Behind the scenes: Making Thekua', date: 'November 05, 2023' },
-  { id: 3, title: 'Our first 1 Lakh Sale!', date: 'December 20, 2023' },
-  { id: 4, title: 'Listing on Blinkit', date: 'February 14, 2024' },
-  { id: 5, title: 'Shark Tank / Founders Pitch Experience', date: 'May 10, 2024' },
+const INSTAGRAM_REELS = [
+  { id: 'DKKK1AST77W', title: 'Reel 1', url: 'https://www.instagram.com/shuddhswad49/reel/DKKK1AST77W/' },
+  { id: 'DKE4K3iz6Pc', title: 'Reel 2', url: 'https://www.instagram.com/shuddhswad49/reel/DKE4K3iz6Pc/' },
+  { id: 'DJ_vJ9CzGS0', title: 'Reel 3', url: 'https://www.instagram.com/shuddhswad49/reel/DJ_vJ9CzGS0/' },
+  { id: 'DJ6eNj0zTxe', title: 'Reel 4', url: 'https://www.instagram.com/shuddhswad49/reel/DJ6eNj0zTxe/' },
+  { id: 'DJ1cXkKTX4W', title: 'Reel 5', url: 'https://www.instagram.com/shuddhswad49/reel/DJ1cXkKTX4W/' },
+  { id: 'DJolKTUTHQR', title: 'Reel 6', url: 'https://www.instagram.com/shuddhswad49/reel/DJolKTUTHQR/' },
+  { id: 'DJjgEmBzmcq', title: 'Reel 7', url: 'https://www.instagram.com/shuddhswad49/reel/DJjgEmBzmcq/' },
+  { id: 'DJeTmS-zpB1', title: 'Reel 8', url: 'https://www.instagram.com/shuddhswad49/reel/DJeTmS-zpB1/' },
+  { id: 'DJbtQsxTMkQ', title: 'Reel 9', url: 'https://www.instagram.com/shuddhswad49/reel/DJbtQsxTMkQ/' },
+  { id: 'DJWqL2HTBM5', title: 'Reel 10', url: 'https://www.instagram.com/shuddhswad49/reel/DJWqL2HTBM5/' },
+  { id: 'DJOxoFgz1pT', title: 'Reel 11', url: 'https://www.instagram.com/shuddhswad49/reel/DJOxoFgz1pT/' },
+  { id: 'DJJ0r0rzyLc', title: 'Reel 12', url: 'https://www.instagram.com/shuddhswad49/reel/DJJ0r0rzyLc/' },
+  { id: 'DJHPfF5zOWW', title: 'Reel 13', url: 'https://www.instagram.com/shuddhswad49/reel/DJHPfF5zOWW/' },
+  { id: 'DJEUH_BzChy', title: 'Reel 14', url: 'https://www.instagram.com/shuddhswad49/reel/DJEUH_BzChy/' },
+  { id: 'DJD3jF8TA0d', title: 'Reel 15', url: 'https://www.instagram.com/shuddhswad49/reel/DJD3jF8TA0d/' },
+  { id: 'DJB61nNzk9O', title: 'Reel 16', url: 'https://www.instagram.com/shuddhswad49/reel/DJB61nNzk9O/' },
+  { id: 'DIqsFYmzabN', title: 'Reel 17', url: 'https://www.instagram.com/shuddhswad49/reel/DIqsFYmzabN/' },
+  { id: 'DIi9ed_TiKQ', title: 'Reel 18', url: 'https://www.instagram.com/shuddhswad49/reel/DIi9ed_TiKQ/' },
+  { id: 'DH0n2MCT52A', title: 'Reel 19', url: 'https://www.instagram.com/shuddhswad49/reel/DH0n2MCT52A/' },
+  { id: 'DHlA1-ZT0Ds', title: 'Reel 20', url: 'https://www.instagram.com/shuddhswad49/reel/DHlA1-ZT0Ds/' },
 ];
 
 const QUIZ_QUESTIONS = [
@@ -77,7 +92,7 @@ function App() {
     setViewedVideos(newSet);
   };
 
-  const allVideosWatched = viewedVideos.size === MOCK_VIDEOS.length;
+  const allVideosWatched = viewedVideos.size === INSTAGRAM_REELS.length;
 
   const handleAnswer = (qIndex, oIndex) => {
     setQuizAnswers(prev => ({ ...prev, [qIndex]: oIndex }));
@@ -98,29 +113,31 @@ function App() {
         <h1 className="brand-title">Shuddh Swad</h1>
         <div className="progress-badge animate-slide-up">
           <span>👀</span>
-          {viewedVideos.size} / {MOCK_VIDEOS.length}
+          {viewedVideos.size} / {INSTAGRAM_REELS.length}
         </div>
       </header>
 
       {/* Timeline Section */}
       <main className="container">
         <p className="text-center mt-4 mb-8" style={{ color: 'var(--text-muted)' }}>
-          Watch all {MOCK_VIDEOS.length} videos chronologically to unlock your reward and the final quiz!
+          Watch all {INSTAGRAM_REELS.length} videos chronologically to unlock your reward and the final quiz!
         </p>
 
         <div className="timeline">
-          {MOCK_VIDEOS.map((video) => (
-            <div key={video.id} className="video-card animate-slide-up">
-              <div className="video-placeholder">
-                <div className="play-icon"></div>
-                <span style={{ position: 'absolute', bottom: '10px', left: '10px', fontSize: '0.875rem' }}>
-                  Mock Instagram Reel
-                </span>
+          {INSTAGRAM_REELS.map((video, index) => (
+            <div key={video.id} className="video-card animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div style={{ width: '100%', height: '550px', background: 'var(--bg-color)', overflow: 'hidden' }}>
+                <iframe 
+                  src={`https://www.instagram.com/reel/${video.id}/embed`}
+                  width="100%" 
+                  height="100%" 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  allowTransparency="true"
+                  title={`Shuddh Swad Reel ${index + 1}`}
+                ></iframe>
               </div>
               <div className="video-info">
-                <h3 className="video-title">{video.title}</h3>
-                <span className="video-date">{video.date}</span>
-                
                 <label className="viewed-action">
                   <span style={{ fontWeight: 600 }}>Mark as Viewed</span>
                   <div className="checkbox-wrapper">
